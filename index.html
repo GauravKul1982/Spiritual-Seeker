@@ -1,83 +1,140 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spiritual Seeker</title>
+    <title>Wisdom from Vedas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #E3F2FD;
-            color: #1E3A8A;
             margin: 0;
             padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
         }
         header {
-            background-color: #1E3A8A;
+            background-color: #4a2f22;
             color: white;
             text-align: center;
             padding: 20px;
-            font-size: 24px;
         }
-        .container {
+        main {
             max-width: 800px;
             margin: 20px auto;
-            background: white;
             padding: 20px;
-            border-radius: 10px;
+            background-color: white;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
         }
-        h2 {
-            color: #1E3A8A;
-        }
-        .blog-post {
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
-        }
-        .blog-post:last-child {
-            border-bottom: none;
-        }
-        footer {
+        h1, h2 {
             text-align: center;
-            padding: 15px;
-            background-color: #1E3A8A;
+        }
+        .story {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .full-story {
+            display: none;
+            margin-top: 10px;
+            color: #555;
+            font-size: 14px;
+        }
+        .read-more {
+            color: #6b3f2a;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        textarea, input {
+            width: 100%;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #4a2f22;
             color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #6b3f2a;
+        }
+        .comment-section {
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <header>
-        Spiritual Seeker
-    </header>
 
-    <div class="container">
-        <h2>Welcome to my Spiritual Blog</h2>
-        <p>Explore stories from the Vedas, Upanishads, and interesting insights on religions.</p>
+<header>
+    <h1>Wisdom from Vedas</h1>
+    <p>Exploring the spiritual essence of ancient scriptures</p>
+</header>
 
-        <div class="blog-post">
-            <h3>The Story of Nachiketa and Yama</h3>
-            <p>Nachiketa, a young boy, questions the nature of death and immortality, leading to profound wisdom from Yama, the god of death...</p>
-            <a href="#">Read more</a>
-        </div>
+<main>
+    <h2>Spiritual Stories</h2>
 
-        <div class="blog-post">
-            <h3>The Meaning of Om</h3>
-            <p>Om is considered the primordial sound of the universe, representing creation, preservation, and destruction...</p>
-            <a href="#">Read more</a>
-        </div>
-
-        <div class="blog-post">
-            <h3>The Four Stages of Life in Hinduism</h3>
-            <p>From Brahmacharya (student life) to Sannyasa (renunciation), discover the spiritual journey in Hindu philosophy...</p>
-            <a href="#">Read more</a>
+    <div class="story">
+        <h3>The Story of Nachiketa</h3>
+        <p>Nachiketa, a young seeker, approached Yama, the Lord of Death, to seek the ultimate truth...</p>
+        <span class="read-more" onclick="toggleStory('story1')">Read more</span>
+        <div id="story1" class="full-story">
+            <p>Nachiketa's father, a sage, performed a ritual where he had to donate his possessions. He offered weak, old cows, angering his son. Nachiketa asked, "Father, to whom will you give me?" His father, irritated, replied, "To Yama, the God of Death!"  
+            Nachiketa took it seriously and went to Yama's abode. Yama was absent, so he waited for three days. Pleased by his patience, Yama granted him three boons. Nachiketa asked for his father’s peace, knowledge of fire sacrifice, and the secret of life after death. Yama tested him but finally revealed the eternal truth: **"The soul is immortal and beyond birth and death."**</p>
         </div>
     </div>
 
-    <footer>
-        &copy; 2025 Spiritual Seeker | Exploring the Depths of Spirituality
-    </footer>
+    <div class="story">
+        <h3>The Wisdom of King Janaka</h3>
+        <p>A sage asked King Janaka how he remained detached despite being a ruler...</p>
+        <span class="read-more" onclick="toggleStory('story2')">Read more</span>
+        <div id="story2" class="full-story">
+            <p>One day, a sage came to test King Janaka’s detachment. He whispered, “Your palace is on fire!”  
+            King Janaka calmly replied, **“The palace may burn, but my inner self remains untouched.”**  
+            The sage was amazed. This proved that true wisdom lies in realizing that material possessions are temporary, while the soul remains free.</p>
+        </div>
+    </div>
+
+    <div class="comment-section">
+        <h2>Leave a Comment</h2>
+        <textarea id="comment" rows="4" placeholder="Write your thoughts..."></textarea>
+        <input id="name" type="text" placeholder="Your Name">
+        <button onclick="addComment()">Post Comment</button>
+
+        <div id="comments"></div>
+    </div>
+</main>
+
+<script>
+    function toggleStory(storyId) {
+        let story = document.getElementById(storyId);
+        if (story.style.display === "none" || story.style.display === "") {
+            story.style.display = "block";
+        } else {
+            story.style.display = "none";
+        }
+    }
+
+    function addComment() {
+        let commentText = document.getElementById("comment").value;
+        let userName = document.getElementById("name").value || "Anonymous";
+        if (commentText.trim() === "") return;
+        
+        let commentBox = document.getElementById("comments");
+        let newComment = document.createElement("div");
+        newComment.style.marginTop = "10px";
+        newComment.style.padding = "10px";
+        newComment.style.border = "1px solid #ddd";
+        newComment.style.backgroundColor = "#f9f9f9";
+        
+        newComment.innerHTML = `<strong>${userName}:</strong> <p>${commentText}</p>`;
+        commentBox.appendChild(newComment);
+        
+        document.getElementById("comment").value = "";
+        document.getElementById("name").value = "";
+    }
+</script>
+
 </body>
 </html>
